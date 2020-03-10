@@ -28,7 +28,8 @@ public class RootController {
 	private UserService userService;
 	@Autowired
 	private ConversationService conversationService;
-	
+
+	//test
 	@GetMapping("/test")
 	public String test() {
 		return "test";
