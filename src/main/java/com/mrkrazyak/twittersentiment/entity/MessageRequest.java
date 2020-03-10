@@ -3,8 +3,8 @@ package com.mrkrazyak.twittersentiment.entity;
 public class MessageRequest {
 
     private String sender;
-    private String content;
-    private String chatRoom;
+    private String text;
+    private String conversationId;
 
     public String getSender() {
         return sender;
@@ -14,19 +14,19 @@ public class MessageRequest {
         this.sender = sender;
     }
 
-    public String getContent() {
-        return content;
+    public String getText() {
+        return text;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getChatRoom() {
-        return chatRoom;
+    public String getConversationId() {
+        return conversationId;
     }
 
-    public void setChatRoom(String chatRoom) {
-        this.chatRoom = chatRoom;
+    public void setConversationId(String conversationId) {
+        this.conversationId = conversationId;
     }
 }

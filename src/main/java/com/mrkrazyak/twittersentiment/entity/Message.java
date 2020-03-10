@@ -1,56 +1,60 @@
 package com.mrkrazyak.twittersentiment.entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Document
 public class Message {
 
     @Id
     private String id;
-
-    private String sender;
-    private String content;
-    private String chatRoom;
+    private ObjectId sender;
+    private String text;
+    private ObjectId conversationId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date timestamp;
+    private List<ObjectId> readBy;
 
     public Message() {}
-    public Message(String sender, String content, String chatRoom) {
+    public Message(ObjectId sender, String text, ObjectId conversationId) {
         this.sender = sender;
-        this.content = content;
-        this.chatRoom = chatRoom;
+        this.text = text;
+        this.conversationId = conversationId;
+        this.timestamp = new Date();
     }
 
     public String getId() {
         return id;
     }
 
-    public String getSender() {
+    public ObjectId getSender() {
         return sender;
     }
 
-    public void setSender(String sender) {
+    public void setSender(ObjectId sender) {
         this.sender = sender;
     }
 
-    public String getContent() {
-        return content;
+    public String getText() {
+        return text;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getChatRoom() {
-        return chatRoom;
+    public ObjectId getConversationId() {
+        return conversationId;
     }
 
-    public void setChatRoom(String chatRoom) {
-        this.chatRoom = chatRoom;
+    public void setConversationId(ObjectId conversationId) {
+        this.conversationId = conversationId;
     }
 
     public Date getTimestamp() {
@@ -59,5 +63,20 @@ public class Message {
 
     public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public List<ObjectId> getReadBy() {
+        return readBy;
+    }
+
+    public void setReadBy(List<ObjectId> readBy) {
+        this.readBy = readBy;
+    }
+
+    public void addReadBy(ObjectId userId) {
+        if (readBy == null) {
+            readBy = new ArrayList<>();
+        }
+        readBy.add(userId);
     }
 }
