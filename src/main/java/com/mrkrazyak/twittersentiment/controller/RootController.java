@@ -4,9 +4,11 @@ import com.mrkrazyak.twittersentiment.entity.CreateConversationRequest;
 import com.mrkrazyak.twittersentiment.entity.CreateUserRequest;
 import com.mrkrazyak.twittersentiment.entity.Message;
 import com.mrkrazyak.twittersentiment.entity.MessageRequest;
+import com.mrkrazyak.twittersentiment.entity.request.CreateFriendRequest;
 import com.mrkrazyak.twittersentiment.entity.response.MessageResponse;
 import com.mrkrazyak.twittersentiment.entity.response.MessageResponseEntity;
 import com.mrkrazyak.twittersentiment.service.ConversationService;
+import com.mrkrazyak.twittersentiment.service.FriendRequestService;
 import com.mrkrazyak.twittersentiment.service.MessageService;
 import com.mrkrazyak.twittersentiment.service.UserService;
 import org.bson.types.ObjectId;
@@ -28,6 +30,8 @@ public class RootController {
 	private UserService userService;
 	@Autowired
 	private ConversationService conversationService;
+	@Autowired
+	private FriendRequestService friendRequestService;
 
 	@GetMapping("/test")
 	public String test() {
@@ -57,6 +61,12 @@ public class RootController {
 	@PostMapping("/conversation")
 	public String createConversation(@RequestBody CreateConversationRequest body) {
 		boolean created = conversationService.createConversation(body.getMemberIds());
+		return String.valueOf(created);
+	}
+
+	@PostMapping("/friendrequest")
+	public String createFriendRequest(@RequestBody CreateFriendRequest body) {
+		boolean created = friendRequestService.createFriendRequest(body);
 		return String.valueOf(created);
 	}
 }
