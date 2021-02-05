@@ -1,8 +1,8 @@
 package com.mrkrazyak.zend.controller;
 
-import com.mrkrazyak.zend.entity.CreateConversationRequest;
-import com.mrkrazyak.zend.entity.CreateUserRequest;
-import com.mrkrazyak.zend.entity.MessageRequest;
+import com.mrkrazyak.zend.entity.request.CreateConversationRequest;
+import com.mrkrazyak.zend.entity.request.CreateUserRequest;
+import com.mrkrazyak.zend.entity.request.MessageRequest;
 import com.mrkrazyak.zend.entity.request.CreateFriendRequest;
 import com.mrkrazyak.zend.entity.response.MessageResponse;
 import com.mrkrazyak.zend.service.ConversationService;
@@ -53,7 +53,7 @@ public class RootController {
 
 	@PostMapping("/conversation")
 	public String createConversation(@RequestBody CreateConversationRequest body) {
-		boolean created = conversationService.createConversation(body.getMemberIds());
+		boolean created = conversationService.createConversation(body);
 		return String.valueOf(created);
 	}
 

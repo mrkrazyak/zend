@@ -1,6 +1,5 @@
 package com.mrkrazyak.zend.entity;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,12 +11,12 @@ public class Conversation {
 
     @Id
     private String id;
-    private List<ObjectId> members;
+    private List<String> members;
 
     public Conversation() {
-        this.members = new ArrayList<>();
+        this.members = new ArrayList<String>();
     }
-    public Conversation(List<ObjectId> members) {
+    public Conversation(List<String> members) {
         this.members = members;
     }
 
@@ -25,15 +24,15 @@ public class Conversation {
         return id;
     }
 
-    public List<ObjectId> getMembers() {
+    public List<String> getMembers() {
         return members;
     }
 
-    public void setMembers(List<ObjectId> users) {
+    public void setMembers(List<String> users) {
         this.members = users;
     }
 
-    public void addMember(ObjectId newUser) {
+    public void addMember(String newUser) {
         this.members.add(newUser);
     }
 }

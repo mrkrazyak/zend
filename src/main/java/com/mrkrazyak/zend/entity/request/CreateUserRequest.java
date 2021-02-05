@@ -1,4 +1,4 @@
-package com.mrkrazyak.zend.entity;
+package com.mrkrazyak.zend.entity.request;
 
 public class CreateUserRequest {
 

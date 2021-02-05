@@ -1,6 +1,5 @@
 package com.mrkrazyak.zend.entity;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,16 +13,16 @@ public class Message {
 
     @Id
     private String id;
-    private ObjectId sender;
+    private String senderId;
     private String text;
-    private ObjectId conversationId;
+    private String conversationId;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date timestamp;
-    private List<ObjectId> readBy;
+    private List<String> readByIds;
 
     public Message() {}
-    public Message(ObjectId sender, String text, ObjectId conversationId) {
-        this.sender = sender;
+    public Message(String senderId, String text, String conversationId) {
+        this.senderId = senderId;
         this.text = text;
         this.conversationId = conversationId;
         this.timestamp = new Date();
@@ -33,12 +32,12 @@ public class Message {
         return id;
     }
 
-    public ObjectId getSender() {
-        return sender;
+    public String getSenderId() {
+        return senderId;
     }
 
-    public void setSender(ObjectId sender) {
-        this.sender = sender;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
 
     public String getText() {
@@ -49,11 +48,11 @@ public class Message {
         this.text = text;
     }
 
-    public ObjectId getConversationId() {
+    public String getConversationId() {
         return conversationId;
     }
 
-    public void setConversationId(ObjectId conversationId) {
+    public void setConversationId(String conversationId) {
         this.conversationId = conversationId;
     }
 
@@ -65,18 +64,18 @@ public class Message {
         this.timestamp = timestamp;
     }
 
-    public List<ObjectId> getReadBy() {
-        return readBy;
+    public List<String> getReadByIds() {
+        return readByIds;
     }
 
-    public void setReadBy(List<ObjectId> readBy) {
-        this.readBy = readBy;
+    public void setReadByIds(List<String> readByIds) {
+        this.readByIds = readByIds;
     }
 
-    public void addReadBy(ObjectId userId) {
-        if (readBy == null) {
-            readBy = new ArrayList<>();
+    public void addReadBy(String userId) {
+        if (readByIds == null) {
+            readByIds = new ArrayList<String>();
         }
-        readBy.add(userId);
+        readByIds.add(userId);
     }
 }
