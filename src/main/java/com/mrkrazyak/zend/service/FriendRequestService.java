@@ -1,9 +1,9 @@
-package com.mrkrazyak.twittersentiment.service;
+package com.mrkrazyak.zend.service;
 
-import com.mrkrazyak.twittersentiment.entity.FriendRequest;
-import com.mrkrazyak.twittersentiment.entity.request.CreateFriendRequest;
-import com.mrkrazyak.twittersentiment.repository.FriendRequestRepository;
-import com.mrkrazyak.twittersentiment.repository.UserRepository;
+import com.mrkrazyak.zend.entity.FriendRequest;
+import com.mrkrazyak.zend.entity.request.CreateFriendRequest;
+import com.mrkrazyak.zend.repository.FriendRequestRepository;
+import com.mrkrazyak.zend.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

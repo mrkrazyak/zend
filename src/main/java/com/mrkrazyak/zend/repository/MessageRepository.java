@@ -1,6 +1,6 @@
-package com.mrkrazyak.twittersentiment.repository;
+package com.mrkrazyak.zend.repository;
 
-import com.mrkrazyak.twittersentiment.entity.Message;
+import com.mrkrazyak.zend.entity.Message;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

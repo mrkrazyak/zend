@@ -1,13 +1,13 @@
-package com.mrkrazyak.twittersentiment;
+package com.mrkrazyak.zend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TwittersentimentApplication {
+public class ZendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TwittersentimentApplication.class, args);
+		SpringApplication.run(ZendApplication.class, args);
 	}
 
 }

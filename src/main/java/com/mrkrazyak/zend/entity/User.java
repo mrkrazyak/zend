@@ -1,4 +1,4 @@
-package com.mrkrazyak.twittersentiment.entity;
+package com.mrkrazyak.zend.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

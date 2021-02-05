@@ -1,25 +1,18 @@
-package com.mrkrazyak.twittersentiment.controller;
+package com.mrkrazyak.zend.controller;
 
-import com.mrkrazyak.twittersentiment.entity.CreateConversationRequest;
-import com.mrkrazyak.twittersentiment.entity.CreateUserRequest;
-import com.mrkrazyak.twittersentiment.entity.Message;
-import com.mrkrazyak.twittersentiment.entity.MessageRequest;
-import com.mrkrazyak.twittersentiment.entity.request.CreateFriendRequest;
-import com.mrkrazyak.twittersentiment.entity.response.MessageResponse;
-import com.mrkrazyak.twittersentiment.entity.response.MessageResponseEntity;
-import com.mrkrazyak.twittersentiment.service.ConversationService;
-import com.mrkrazyak.twittersentiment.service.FriendRequestService;
-import com.mrkrazyak.twittersentiment.service.MessageService;
-import com.mrkrazyak.twittersentiment.service.UserService;
-import org.bson.types.ObjectId;
+import com.mrkrazyak.zend.entity.CreateConversationRequest;
+import com.mrkrazyak.zend.entity.CreateUserRequest;
+import com.mrkrazyak.zend.entity.MessageRequest;
+import com.mrkrazyak.zend.entity.request.CreateFriendRequest;
+import com.mrkrazyak.zend.entity.response.MessageResponse;
+import com.mrkrazyak.zend.service.ConversationService;
+import com.mrkrazyak.zend.service.FriendRequestService;
+import com.mrkrazyak.zend.service.MessageService;
+import com.mrkrazyak.zend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.xml.ws.Response;
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 public class RootController {

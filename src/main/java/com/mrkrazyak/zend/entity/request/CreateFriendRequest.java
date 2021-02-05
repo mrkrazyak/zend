@@ -1,4 +1,4 @@
-package com.mrkrazyak.twittersentiment.entity.request;
+package com.mrkrazyak.zend.entity.request;
 
 public class CreateFriendRequest {
 

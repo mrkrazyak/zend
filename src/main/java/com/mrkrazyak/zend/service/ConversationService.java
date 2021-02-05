@@ -1,7 +1,7 @@
-package com.mrkrazyak.twittersentiment.service;
+package com.mrkrazyak.zend.service;
 
-import com.mrkrazyak.twittersentiment.entity.Conversation;
-import com.mrkrazyak.twittersentiment.repository.ConversationRepository;
+import com.mrkrazyak.zend.entity.Conversation;
+import com.mrkrazyak.zend.repository.ConversationRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

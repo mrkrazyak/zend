@@ -1,12 +1,12 @@
-package com.mrkrazyak.twittersentiment.service;
+package com.mrkrazyak.zend.service;
 
-import com.mrkrazyak.twittersentiment.entity.Message;
-import com.mrkrazyak.twittersentiment.entity.MessageRequest;
-import com.mrkrazyak.twittersentiment.entity.User;
-import com.mrkrazyak.twittersentiment.entity.response.MessageResponse;
-import com.mrkrazyak.twittersentiment.entity.response.MessageResponseEntity;
-import com.mrkrazyak.twittersentiment.repository.MessageRepository;
-import com.mrkrazyak.twittersentiment.repository.UserRepository;
+import com.mrkrazyak.zend.entity.Message;
+import com.mrkrazyak.zend.entity.MessageRequest;
+import com.mrkrazyak.zend.entity.User;
+import com.mrkrazyak.zend.entity.response.MessageResponse;
+import com.mrkrazyak.zend.entity.response.MessageResponseEntity;
+import com.mrkrazyak.zend.repository.MessageRepository;
+import com.mrkrazyak.zend.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

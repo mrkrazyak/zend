@@ -1,4 +1,4 @@
-package com.mrkrazyak.twittersentiment.entity.response;
+package com.mrkrazyak.zend.entity.response;
 
 import java.util.List;
 

@@ -1,10 +1,10 @@
-package com.mrkrazyak.twittersentiment;
+package com.mrkrazyak.zend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TwittersentimentApplicationTests {
+class ZendApplicationTests {
 
 	@Test
 	void contextLoads() {

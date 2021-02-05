@@ -1,4 +1,4 @@
-package com.mrkrazyak.twittersentiment.entity;
+package com.mrkrazyak.zend.entity;
 
 public class MessageRequest {
 
