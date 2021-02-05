@@ -6,6 +6,8 @@ import com.mrkrazyak.zend.repository.ConversationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class ConversationService {
 
@@ -24,6 +26,10 @@ public class ConversationService {
         }
         conversation = conversationRepository.save(conversation);
         return true;
+    }
+
+    public Optional<Conversation> findConversationById(String conversationId) {
+        return conversationRepository.findById(conversationId);
     }
 
 }

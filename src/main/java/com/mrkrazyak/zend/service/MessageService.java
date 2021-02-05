@@ -1,10 +1,12 @@
 package com.mrkrazyak.zend.service;
 
+import com.mrkrazyak.zend.entity.Conversation;
 import com.mrkrazyak.zend.entity.Message;
 import com.mrkrazyak.zend.entity.request.MessageRequest;
 import com.mrkrazyak.zend.entity.User;
 import com.mrkrazyak.zend.entity.response.MessageResponse;
 import com.mrkrazyak.zend.entity.response.MessageResponseEntity;
+import com.mrkrazyak.zend.exceptions.NotFoundException;
 import com.mrkrazyak.zend.repository.MessageRepository;
 import com.mrkrazyak.zend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +21,24 @@ public class MessageService {
     private MessageRepository messageRepository;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private ConversationService conversationService;
 
     public MessageResponse getMessages(String conversationId) {
+        Optional<Conversation> conversationOpt = conversationService.findConversationById(conversationId);
+        if (!conversationOpt.isPresent()) {
+            throw new NotFoundException("conversationId [" + conversationId + "]");
+        }
+
         List<Message> messages = messageRepository.findByConversationId(conversationId);
+
         MessageResponse response = new MessageResponse();
         List<MessageResponseEntity> responseEntities = new ArrayList<>();
         Map<String, String> usernames = new HashMap<>();
         for (Message message : messages) {
             String username = usernames.get(message.getSenderId());
             if (username == null) {
-                String senderId = message.getSenderId().toString();
+                String senderId = message.getSenderId();
                 Optional<User> sender = userRepository.findById(senderId);
                 username = sender.isPresent() ? sender.get().getUsername() : "";
                 usernames.put(message.getSenderId(), username);
