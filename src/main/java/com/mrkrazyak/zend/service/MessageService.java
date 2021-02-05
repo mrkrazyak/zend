@@ -11,9 +11,7 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class MessageService {
@@ -28,19 +26,19 @@ public class MessageService {
         List<Message> messages = messageRepository.findByConversationId(conversationObjId);
         MessageResponse response = new MessageResponse();
         List<MessageResponseEntity> responseEntities = new ArrayList<>();
+        Map<ObjectId, String> usernames = new HashMap<>();
         for (Message message : messages) {
-            String username;
-            String senderId = message.getSender().toString();
-            Optional<User> sender = userRepository.findById(senderId);
-            if (sender.isPresent()) {
-                username = sender.get().getUsername();
-            } else {
-                username = "";
+            String username = usernames.get(message.getSender());
+            if (username == null) {
+                String senderId = message.getSender().toString();
+                Optional<User> sender = userRepository.findById(senderId);
+                username = sender.isPresent() ? sender.get().getUsername() : "";
+                usernames.put(message.getSender(), username);
             }
-            String text = message.getText();
-            String timestamp = message.getTimestamp().toString();
-            MessageResponseEntity responseEntity = new MessageResponseEntity(username, text, timestamp);
-            responseEntities.add(responseEntity);
+
+            responseEntities.add(new MessageResponseEntity(username,
+                    message.getText(),
+                    message.getTimestamp().toString()));
         }
         response.setMessages(responseEntities);
         return response;
