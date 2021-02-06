@@ -2,6 +2,7 @@ package com.mrkrazyak.zend.config;
 
 import com.mrkrazyak.zend.entity.response.ErrorMessage;
 import com.mrkrazyak.zend.entity.response.ZendResponse;
+import com.mrkrazyak.zend.exceptions.BadRequestException;
 import com.mrkrazyak.zend.exceptions.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +22,13 @@ public class ZendExceptionHandler {
         ZendResponse response = new ZendResponse();
         response.setError(new ErrorMessage("Internal Server Error"));
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public final ResponseEntity<ZendResponse> handleBadRequestException(BadRequestException ex) {
+        ZendResponse response = new ZendResponse();
+        response.setError(new ErrorMessage(ex.getLocalizedMessage()));
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(NotFoundException.class)

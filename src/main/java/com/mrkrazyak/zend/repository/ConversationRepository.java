@@ -7,6 +7,4 @@ import java.util.Optional;
 
 public interface ConversationRepository extends MongoRepository<Conversation, String> {
 
-    public Optional<Conversation> findById(String conversationId);
-
 }

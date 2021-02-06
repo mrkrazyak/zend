@@ -29,4 +29,12 @@ public class UserService {
         return user.isPresent();
     }
 
+    public Optional<User> findUserById(String userId) {
+        return userRepository.findById(userId);
+    }
+
+    public User findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
 }

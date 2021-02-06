@@ -3,6 +3,7 @@ package com.mrkrazyak.zend.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -74,8 +75,24 @@ public class Message {
 
     public void addReadBy(String userId) {
         if (readByIds == null) {
-            readByIds = new ArrayList<String>();
+            readByIds = new ArrayList<>();
+            readByIds.add(userId);
+        } else if (!readByIds.contains(userId)) {
+            readByIds.add(userId);
         }
-        readByIds.add(userId);
+    }
+
+    public void addReadBy(List<String> userIds) {
+        if (readByIds == null) {
+            readByIds = new ArrayList<>();
+        }
+        for (String userId : userIds) {
+            if (!readByIds.contains(userId)) {
+                readByIds.add(userId);
+            }
+        }
+        if (CollectionUtils.isEmpty(readByIds)) {
+            readByIds = null;
+        }
     }
 }
