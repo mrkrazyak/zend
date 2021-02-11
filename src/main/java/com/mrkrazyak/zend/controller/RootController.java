@@ -2,6 +2,7 @@ package com.mrkrazyak.zend.controller;
 
 import com.mrkrazyak.zend.entity.request.*;
 import com.mrkrazyak.zend.entity.response.MessageResponse;
+import com.mrkrazyak.zend.entity.response.RegisterUserResponse;
 import com.mrkrazyak.zend.service.ConversationService;
 import com.mrkrazyak.zend.service.FriendRequestService;
 import com.mrkrazyak.zend.service.MessageService;
@@ -23,6 +24,18 @@ public class RootController {
 	@Autowired
 	private FriendRequestService friendRequestService;
 
+	@PostMapping("/register")
+	public ResponseEntity<RegisterUserResponse> registerUser(@RequestBody RegisterUserRequest requestBody) {
+		RegisterUserResponse response = userService.registerUser(requestBody);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@PostMapping("/login")
+	public ResponseEntity<String> login(@RequestBody LoginRequest requestBody) {
+		boolean login = userService.login(requestBody);
+		return new ResponseEntity<>(String.valueOf(login), HttpStatus.OK);
+	}
+
 	@GetMapping("/message")
 	public ResponseEntity<MessageResponse> getMessages(@RequestParam String conversationId) {
 		MessageResponse messageResponse = messageService.getMessages(conversationId);
@@ -41,13 +54,6 @@ public class RootController {
 								@PathVariable("messageId") String messageId) {
 		boolean saved = messageService.updateMessage(messageId, requestBody);
 		return String.valueOf(saved);
-	}
-
-	@PostMapping("/user")
-	public String createUser(@RequestBody CreateUserRequest requestBody) {
-		String username = requestBody.getUsername();
-		boolean created = userService.createUser(username);
-		return String.valueOf(created);
 	}
 
 	@PostMapping("/conversation")
